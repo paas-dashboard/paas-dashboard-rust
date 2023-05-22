@@ -1,0 +1,10 @@
+# file system
+.DS_Store
+
+# ide
+**/.idea
+
+dist/**
+out/**
+static/**
+target/**
