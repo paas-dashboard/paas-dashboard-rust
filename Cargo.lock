@@ -1132,7 +1132,7 @@ dependencies = [
 [[package]]
 name = "pulsar-admin-rust"
 version = "0.0.1"
-source = "git+https://github.com/protocol-laboratory/pulsar-admin-rust?rev=2c9e665c67c4581a446592260c913bc5693dd200#2c9e665c67c4581a446592260c913bc5693dd200"
+source = "git+https://github.com/protocol-laboratory/pulsar-admin-rust?rev=6ea1245f1b3c2ebc993fcca94afce6ecc23b92b3#6ea1245f1b3c2ebc993fcca94afce6ecc23b92b3"
 dependencies = [
  "rand",
  "reqwest",
