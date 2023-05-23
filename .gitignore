@@ -4,7 +4,5 @@
 # ide
 **/.idea
 
-dist/**
-out/**
-static/**
+/portal/
 target/**

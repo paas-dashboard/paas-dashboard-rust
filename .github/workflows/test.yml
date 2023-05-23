@@ -1,14 +1,16 @@
-name: line lint
+name: rust test
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  line-lint:
-    name: line lint
+  rust_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: linelint
-        uses: fernandrone/linelint@master
+      - name: Run unit tests
+        run: cargo test

@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   clippy_check:
     runs-on: ubuntu-latest
