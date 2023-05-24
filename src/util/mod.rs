@@ -1,4 +1,6 @@
 use std::env;
+use std::error::Error;
+use std::net::SocketAddrV4;
 
 pub fn init() {
     let log_level = match env::var("LOG_LEVEL") {
@@ -34,4 +36,32 @@ pub fn init() {
         .level(log_level)
         .chain(std::io::stdout())
         .apply().unwrap();
+}
+
+pub async fn lookup_v4_host(host: &str) -> Result<Vec<SocketAddrV4>, Box<dyn Error>> {
+    match tokio::net::lookup_host(host).await {
+        Ok(addresses) => {
+            let mut socket_addresses = Vec::new();
+            for address in addresses {
+                if let std::net::SocketAddr::V4(socket_address) = address {
+                    socket_addresses.push(socket_address);
+                }
+            }
+            Ok(socket_addresses)
+        }
+        Err(e) => Err(Box::new(e)),
+    }
+}
+
+pub async fn lookup_host(host: &str) -> Result<Vec<std::net::SocketAddr>, Box<dyn Error>> {
+    match tokio::net::lookup_host(host).await {
+        Ok(addresses) => {
+            let mut socket_addresses = Vec::new();
+            for address in addresses {
+                socket_addresses.push(address);
+            }
+            Ok(socket_addresses)
+        }
+        Err(e) => Err(Box::new(e)),
+    }
 }
